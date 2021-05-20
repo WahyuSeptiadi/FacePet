@@ -1,9 +1,14 @@
-import 'dart:ui' as ui;
-
-import 'package:flutter/cupertino.dart';
+import 'package:face_pet/utils/shadow_text.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class CameraPage extends StatefulWidget {
+  const CameraPage({Key key}) : super(key: key);
+
+  @override
+  _CameraPageState createState() => _CameraPageState();
+}
+
+class _CameraPageState extends State<CameraPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +29,7 @@ class HomePage extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(left: 10, top: 10),
               child: ShadowText(
-                'Face Pets',
+                'Upload Photo',
                 style: TextStyle(
                   fontSize: 40,
                   fontFamily: 'Old',
@@ -34,34 +39,6 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class ShadowText extends StatelessWidget {
-  ShadowText(this.data, {this.style}) : assert(data != null);
-
-  final String data;
-  final TextStyle style;
-
-  Widget build(BuildContext context) {
-    return new ClipRect(
-      child: new Stack(
-        children: [
-          new Positioned(
-            top: 2.0,
-            left: 2.0,
-            child: new Text(
-              data,
-              style: style.copyWith(color: Colors.black.withOpacity(0.3)),
-            ),
-          ),
-          new BackdropFilter(
-            filter: new ui.ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
-            child: new Text(data, style: style),
-          ),
-        ],
       ),
     );
   }
