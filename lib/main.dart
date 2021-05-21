@@ -8,7 +8,7 @@ import 'pages/home_page.dart';
 void main() {
   runApp(MyApp());
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.blue[200],
+    statusBarColor: Colors.blue[300],
   ));
 }
 
@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Home(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -34,7 +35,6 @@ class _HomeState extends State<Home> {
   PageController _pageController = PageController();
 
   List<Widget> _screen = [
-    // urutan index menentukan tampilan halaman pertama
     HomePage(),
     CameraPage(),
     ProfilePage(),
@@ -67,7 +67,7 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
-              color: _currentIndex == 0 ? Colors.blue : Colors.grey,
+              color: _currentIndex == 0 ? Colors.blue[300] : Colors.grey,
             ),
             // ignore: deprecated_member_use
             title: Text(
@@ -81,7 +81,7 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.camera,
-              color: _currentIndex == 1 ? Colors.blue : Colors.grey,
+              color: _currentIndex == 1 ? Colors.blue[300] : Colors.grey,
             ),
             // ignore: deprecated_member_use
             title: Text(
@@ -95,7 +95,7 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
-              color: _currentIndex == 2 ? Colors.blue : Colors.grey,
+              color: _currentIndex == 2 ? Colors.blue[300] : Colors.grey,
             ),
             // ignore: deprecated_member_use
             title: Text(
