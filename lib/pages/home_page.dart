@@ -4,7 +4,7 @@ import 'package:face_pet/utils/shadow_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-// import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -28,13 +28,13 @@ class HomePage extends StatelessWidget {
               color: Colors.white,
             ),
             onPressed: () {
-              // Fluttertoast.showToast(
-              //     msg: 'Coming Soon',
-              //     toastLength: Toast.LENGTH_SHORT,
-              //     gravity: ToastGravity.CENTER,
-              //     timeInSecForIosWeb: 1,
-              //     backgroundColor: Colors.blue[300],
-              //     textColor: Colors.black54);
+              Fluttertoast.showToast(
+                  msg: 'Coming Soon',
+                  toastLength: Toast.LENGTH_LONG,
+                  gravity: ToastGravity.CENTER,
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: Colors.blue[300],
+                  textColor: Colors.white);
             },
           ),
         ],
