@@ -24,13 +24,28 @@ class HomePage extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(
-              Icons.settings,
+              Icons.favorite,
               color: Colors.white,
             ),
             onPressed: () {
               Fluttertoast.showToast(
                   msg: 'Coming Soon',
-                  toastLength: Toast.LENGTH_LONG,
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.CENTER,
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: Colors.blue[300],
+                  textColor: Colors.white);
+            },
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.chat,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Fluttertoast.showToast(
+                  msg: 'Coming Soon',
+                  toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.CENTER,
                   timeInSecForIosWeb: 1,
                   backgroundColor: Colors.blue[300],
@@ -145,37 +160,15 @@ class HomeMobilePage extends StatelessWidget {
                   }));
                 },
                 child: Card(
-                  child: Column(
-                    children: [
-                      Container(
-                        width: 150,
-                        height: 150,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(trend.imageAsset),
-                            fit: BoxFit.cover,
-                            alignment: Alignment.center,
-                          ),
-                        ),
+                  child: Container(
+                    width: 130,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(trend.imageAsset),
+                        fit: BoxFit.cover,
+                        alignment: Alignment.center,
                       ),
-                      SizedBox(height: 8),
-                      Text(
-                        trend.name,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: 'louis',
-                          color: Colors.black,
-                        ),
-                      ),
-                      Text(
-                        trend.type,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontFamily: 'louis',
-                          color: Colors.black54,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               );
@@ -191,7 +184,7 @@ class HomeMobilePage extends StatelessWidget {
           ),
         ),
         Expanded(
-          flex: 2,
+          flex: 3,
           child: Scrollbar(
             isAlwaysShown: true,
             child: Padding(
@@ -225,8 +218,8 @@ class HomeMobilePage extends StatelessWidget {
                               pets.name,
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                fontFamily: 'louis',
                               ),
                             ),
                           ),
@@ -236,6 +229,11 @@ class HomeMobilePage extends StatelessWidget {
                             child: Text(
                               pets.type,
                               textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontFamily: 'louis',
+                                color: Colors.black54,
+                              ),
                             ),
                           ),
                         ],

@@ -1,5 +1,6 @@
 import 'package:face_pet/utils/shadow_text.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key key}) : super(key: key);
@@ -13,33 +14,35 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[200],
-      body: SafeArea(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(left: 10, top: 10),
-              width: 40,
-              height: 40,
-              child: ClipRRect(
-                child: Image.asset('images/logo.jpg'),
-                borderRadius: BorderRadius.circular(50.0),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 10, top: 10),
-              child: ShadowText(
-                'My Profile',
-                style: TextStyle(
-                  fontSize: 40,
-                  fontFamily: 'Old',
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ],
+      appBar: AppBar(
+        backgroundColor: Colors.blue[300],
+        title: Text(
+          'My Profile',
+          style: TextStyle(
+            fontSize: 30,
+            fontFamily: 'Old',
+            color: Colors.white,
+          ),
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.settings,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Fluttertoast.showToast(
+                  msg: 'Coming Soon',
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.CENTER,
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: Colors.blue[300],
+                  textColor: Colors.white);
+            },
+          ),
+        ],
       ),
+      body: Container(),
     );
   }
 }

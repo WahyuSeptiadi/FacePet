@@ -80,7 +80,7 @@ class _HomeState extends State<Home> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.camera,
+              Icons.add_a_photo,
               color: _currentIndex == 1 ? Colors.blue[300] : Colors.grey,
             ),
             // ignore: deprecated_member_use

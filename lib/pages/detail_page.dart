@@ -1,4 +1,5 @@
 import 'package:face_pet/models/pets.dart';
+import 'package:face_pet/utils/shadow_text.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +44,7 @@ class DetailMobilePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         CircleAvatar(
-                          backgroundColor: Colors.grey,
+                          backgroundColor: Colors.blue[300],
                           child: IconButton(
                             icon: Icon(
                               Icons.arrow_back,
@@ -79,31 +80,37 @@ class DetailMobilePage extends StatelessWidget {
                 children: <Widget>[
                   Column(
                     children: <Widget>[
-                      Icon(Icons.calendar_today),
+                      Icon(
+                        Icons.stars,
+                        color: Colors.amber,
+                      ),
                       SizedBox(height: 8.0),
                       Text(
                         pets.type,
-                        // style: informationTextStyle,
                       ),
                     ],
                   ),
                   Column(
                     children: <Widget>[
-                      Icon(Icons.access_time),
+                      Icon(
+                        Icons.access_time,
+                        color: Colors.blue,
+                      ),
                       SizedBox(height: 8.0),
                       Text(
                         pets.age,
-                        // style: informationTextStyle,
                       ),
                     ],
                   ),
                   Column(
                     children: <Widget>[
-                      Icon(Icons.monetization_on),
+                      Icon(
+                        Icons.color_lens,
+                        color: Colors.pinkAccent,
+                      ),
                       SizedBox(height: 8.0),
                       Text(
                         pets.color,
-                        // style: informationTextStyle,
                       ),
                     ],
                   ),
@@ -171,10 +178,10 @@ class _DetailWebPageState extends State<DetailWebPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(
-                  'Wisata Bandung',
+                ShadowText(
+                  'Face Pets',
                   style: TextStyle(
-                    fontFamily: 'Staatliches',
+                    fontFamily: 'old',
                     fontSize: 32,
                   ),
                 ),
@@ -228,21 +235,23 @@ class _DetailWebPageState extends State<DetailWebPage> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize: 30.0,
-                                    fontFamily: 'Staatliches',
+                                    fontFamily: 'louis',
                                   ),
                                 ),
                               ),
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
                                     children: <Widget>[
-                                      Icon(Icons.calendar_today),
+                                      Icon(
+                                        Icons.stars,
+                                        color: Colors.amber,
+                                      ),
                                       SizedBox(width: 8.0),
                                       Text(
                                         widget.pets.type,
-                                        // style: informationTextStyle,
                                       ),
                                     ],
                                   ),
@@ -251,22 +260,26 @@ class _DetailWebPageState extends State<DetailWebPage> {
                               ),
                               Row(
                                 children: <Widget>[
-                                  Icon(Icons.access_time),
+                                  Icon(
+                                    Icons.access_time,
+                                    color: Colors.blue,
+                                  ),
                                   SizedBox(width: 8.0),
                                   Text(
                                     widget.pets.age,
-                                    // style: informationTextStyle,
                                   ),
                                 ],
                               ),
                               SizedBox(height: 8.0),
                               Row(
                                 children: <Widget>[
-                                  Icon(Icons.monetization_on),
+                                  Icon(
+                                    Icons.color_lens,
+                                    color: Colors.pinkAccent,
+                                  ),
                                   SizedBox(width: 8.0),
                                   Text(
                                     widget.pets.color,
-                                    // style: informationTextStyle,
                                   ),
                                 ],
                               ),
@@ -276,8 +289,7 @@ class _DetailWebPageState extends State<DetailWebPage> {
                                   widget.pets.description,
                                   textAlign: TextAlign.justify,
                                   style: TextStyle(
-                                    fontSize: 16.0,
-                                    fontFamily: 'Oxygen',
+                                    fontSize: 16,
                                   ),
                                 ),
                               ),
