@@ -1,5 +1,5 @@
 import 'package:face_pet/models/pets.dart';
-import 'package:face_pet/pages/profile_page.dart';
+import 'package:face_pet/pages/detail_page.dart';
 import 'package:face_pet/utils/shadow_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -42,11 +42,11 @@ class HomePage extends StatelessWidget {
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           if (constraints.maxWidth <= 600) {
-            return HorizontalList();
+            return HomeMobilePage();
           } else if (constraints.maxWidth <= 1200) {
-            return PetsGrid(gridCount: 4);
+            return HomeWebPage(gridCount: 4);
           } else {
-            return PetsGrid(gridCount: 6);
+            return HomeWebPage(gridCount: 6);
           }
         },
       ),
@@ -54,10 +54,10 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class PetsGrid extends StatelessWidget {
+class HomeWebPage extends StatelessWidget {
   final int gridCount;
 
-  PetsGrid({this.gridCount});
+  HomeWebPage({this.gridCount});
 
   @override
   Widget build(BuildContext context) {
@@ -69,11 +69,11 @@ class PetsGrid extends StatelessWidget {
           crossAxisCount: gridCount,
           crossAxisSpacing: 2,
           mainAxisSpacing: 2,
-          children: catPetsList.map((cat) {
+          children: allPetsList.map((pets) {
             return InkWell(
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return ProfilePage();
+                  return DetailPage(pets: pets);
                 }));
               },
               child: Card(
@@ -82,7 +82,7 @@ class PetsGrid extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Image.asset(
-                        cat.imageAsset,
+                        pets.imageAsset,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -90,7 +90,7 @@ class PetsGrid extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: Text(
-                        cat.name,
+                        pets.name,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 16.0,
@@ -101,7 +101,7 @@ class PetsGrid extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
                       child: Text(
-                        cat.type,
+                        pets.type,
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -116,14 +116,14 @@ class PetsGrid extends StatelessWidget {
   }
 }
 
-class HorizontalList extends StatelessWidget {
+class HomeMobilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         ShadowText(
-          '> Cats',
+          '> Trending Pets',
           style: TextStyle(
             fontSize: 20,
             fontFamily: 'louis',
@@ -131,30 +131,36 @@ class HorizontalList extends StatelessWidget {
           ),
         ),
         Expanded(
+          flex: 1,
           child: ListView.builder(
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            itemCount: catPetsList.length,
+            itemCount: trendPetsList.length,
             itemBuilder: (BuildContext context, int index) {
-              final Pets cat = catPetsList[index];
+              final Pets trend = trendPetsList[index];
               return InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return DetailPage(pets: trend);
+                  }));
+                },
                 child: Card(
                   child: Column(
                     children: [
                       Container(
-                        width: 250,
-                        height: 250,
+                        width: 150,
+                        height: 150,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(cat.imageAsset),
+                            image: AssetImage(trend.imageAsset),
                             fit: BoxFit.cover,
                             alignment: Alignment.center,
                           ),
                         ),
                       ),
-                      SizedBox(height: 15),
+                      SizedBox(height: 8),
                       Text(
-                        cat.name,
+                        trend.name,
                         style: TextStyle(
                           fontSize: 20,
                           fontFamily: 'louis',
@@ -162,7 +168,7 @@ class HorizontalList extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        cat.type,
+                        trend.type,
                         style: TextStyle(
                           fontSize: 16,
                           fontFamily: 'louis',
@@ -177,7 +183,7 @@ class HorizontalList extends StatelessWidget {
           ),
         ),
         ShadowText(
-          '> Dogs',
+          '> All Pets',
           style: TextStyle(
             fontSize: 20,
             fontFamily: 'louis',
@@ -185,49 +191,60 @@ class HorizontalList extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemCount: dogPetsList.length,
-            itemBuilder: (BuildContext context, int index) {
-              final Pets dog = dogPetsList[index];
-              return InkWell(
-                child: Card(
-                  child: Column(
-                    children: [
-                      Container(
-                        width: 250,
-                        height: 250,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(dog.imageAsset),
-                            fit: BoxFit.cover,
-                            alignment: Alignment.center,
+          flex: 2,
+          child: Scrollbar(
+            isAlwaysShown: true,
+            child: Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: GridView.count(
+                crossAxisCount: 2,
+                crossAxisSpacing: 2,
+                mainAxisSpacing: 2,
+                children: allPetsList.map((pets) {
+                  return InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return DetailPage(pets: pets);
+                      }));
+                    },
+                    child: Card(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Expanded(
+                            child: Image.asset(
+                              pets.imageAsset,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
+                          SizedBox(height: 5),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Text(
+                              pets.name,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 8.0, bottom: 8.0),
+                            child: Text(
+                              pets.type,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
                       ),
-                      SizedBox(height: 15),
-                      Text(
-                        dog.name,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: 'louis',
-                          color: Colors.black,
-                        ),
-                      ),
-                      Text(
-                        dog.type,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontFamily: 'louis',
-                          color: Colors.black54,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
+                    ),
+                  );
+                }).toList(),
+              ),
+            ),
           ),
         ),
       ],
