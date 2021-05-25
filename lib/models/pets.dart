@@ -151,3 +151,30 @@ var trendPetsList = [
     imageAsset: 'images/cat3.jpg',
   ),
 ];
+
+var myPetsList = [
+  Pets(
+    name: 'Edward',
+    type: 'british',
+    color: 'Grizzle',
+    age: '8 mounts',
+    description: 'As the name suggests, this cat comes from Europe to be precise from England. The striking characteristics that set him apart are his broad face, bushy but short fur coat. In addition, the British Shorthair also has copper colored eyes and a medium tail.',
+    imageAsset: 'images/cat5.jpg',
+  ),
+  Pets(
+    name: 'Fluppy',
+    type: 'maltipoo',
+    color: 'triple color',
+    age: '1 mounts',
+    description: 'Puppy, aka puppy, may indeed be sought after because of its cuteness. But, of course the cute puppies will not last long. However, beagles do have a smaller body than other types of dogs. So, he will always look like a puppy, huh. Its wide and long ears will definitely go up and down when you play with you.',
+    imageAsset: 'images/dog4.jpg',
+  ),
+  Pets(
+    name: 'Jack',
+    type: 'savana',
+    color: 'black tiger line',
+    age: '13 mounts',
+    description: 'The Sabana or Savana cat is a cross between the African cat breeds with the Bengal, Siamese, and Egyptian cats. This American cat is the longest cat with a body size of up to 44 cm.',
+    imageAsset: 'images/cat4.jpg',
+  ),
+];
