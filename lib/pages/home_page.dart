@@ -96,8 +96,7 @@ class HomeWebPage extends StatelessWidget {
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 elevation: 5,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)
-                ),
+                    borderRadius: BorderRadius.circular(10)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -170,8 +169,7 @@ class HomeMobilePage extends StatelessWidget {
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   elevation: 5,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)
-                  ),
+                      borderRadius: BorderRadius.circular(10)),
                   child: Container(
                     width: 130,
                     decoration: BoxDecoration(
@@ -218,8 +216,7 @@ class HomeMobilePage extends StatelessWidget {
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       elevation: 5,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)
-                      ),
+                          borderRadius: BorderRadius.circular(10)),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [

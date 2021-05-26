@@ -39,7 +39,7 @@ class DetailMobilePage extends StatelessWidget {
                 Image.asset(pets.imageAsset),
                 SafeArea(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.only(left: 8, top: 8, right: 8),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -74,47 +74,57 @@ class DetailMobilePage extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Column(
+              child: Card(
+                margin: EdgeInsets.all(20),
+                semanticContainer: true,
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      Icon(
-                        Icons.stars,
-                        color: Colors.amber,
+                      Column(
+                        children: <Widget>[
+                          Icon(
+                            Icons.stars,
+                            color: Colors.amber,
+                          ),
+                          SizedBox(height: 8.0),
+                          Text(
+                            pets.type,
+                          ),
+                        ],
                       ),
-                      SizedBox(height: 8.0),
-                      Text(
-                        pets.type,
+                      Column(
+                        children: <Widget>[
+                          Icon(
+                            Icons.access_time,
+                            color: Colors.blue,
+                          ),
+                          SizedBox(height: 8.0),
+                          Text(
+                            pets.age,
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Icon(
+                            Icons.color_lens,
+                            color: Colors.pinkAccent,
+                          ),
+                          SizedBox(height: 8.0),
+                          Text(
+                            pets.color,
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                  Column(
-                    children: <Widget>[
-                      Icon(
-                        Icons.access_time,
-                        color: Colors.blue,
-                      ),
-                      SizedBox(height: 8.0),
-                      Text(
-                        pets.age,
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: <Widget>[
-                      Icon(
-                        Icons.color_lens,
-                        color: Colors.pinkAccent,
-                      ),
-                      SizedBox(height: 8.0),
-                      Text(
-                        pets.color,
-                      ),
-                    ],
-                  ),
-                ],
+                ),
               ),
             ),
             Container(
@@ -127,21 +137,6 @@ class DetailMobilePage extends StatelessWidget {
                 ),
               ),
             ),
-            // Container(
-            //   height: 150,
-            //   child: ListView(
-            //     scrollDirection: Axis.horizontal,
-            //     children: pets.imageUrls.map((url) {
-            //       return Padding(
-            //         padding: const EdgeInsets.all(4.0),
-            //         child: ClipRRect(
-            //           borderRadius: BorderRadius.circular(10),
-            //           child: Image.network(url),
-            //         ),
-            //       );
-            //     }).toList(),
-            //   ),
-            // ),
           ],
         ),
       ),
