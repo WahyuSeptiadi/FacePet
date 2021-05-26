@@ -57,6 +57,16 @@ class _ProfilePageState extends State<ProfilePage> {
                     margin: EdgeInsets.only(top: 25),
                     width: 150,
                     height: 150,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0x54000000),
+                          spreadRadius: 2,
+                          blurRadius: 20,
+                        ),
+                      ],
+                    ),
                     child: ClipRRect(
                       child: Image.asset('images/profile.jpg'),
                       borderRadius: BorderRadius.circular(100),
@@ -103,6 +113,11 @@ class _ProfilePageState extends State<ProfilePage> {
                           }));
                         },
                         child: Card(
+                          semanticContainer: true,
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
