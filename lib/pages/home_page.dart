@@ -57,11 +57,11 @@ class HomePage extends StatelessWidget {
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           if (constraints.maxWidth <= 600) {
-            return HomeMobilePage();
+            return GridLayoutPage(gridCount: 2);
           } else if (constraints.maxWidth <= 1200) {
-            return HomeWebPage(gridCount: 4);
+            return GridLayoutPage(gridCount: 4);
           } else {
-            return HomeWebPage(gridCount: 6);
+            return GridLayoutPage(gridCount: 6);
           }
         },
       ),
@@ -69,74 +69,11 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class HomeWebPage extends StatelessWidget {
+class GridLayoutPage extends StatelessWidget {
   final int gridCount;
 
-  HomeWebPage({this.gridCount});
+  GridLayoutPage({this.gridCount});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scrollbar(
-      isAlwaysShown: true,
-      child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: GridView.count(
-          crossAxisCount: gridCount,
-          crossAxisSpacing: 2,
-          mainAxisSpacing: 2,
-          children: allPetsList.map((pets) {
-            return InkWell(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return DetailPage(pets: pets);
-                }));
-              },
-              child: Card(
-                semanticContainer: true,
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                elevation: 5,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Expanded(
-                      child: Image.asset(
-                        pets.imageAsset,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    SizedBox(height: 5),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: Text(
-                        pets.name,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
-                      child: Text(
-                        pets.type,
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          }).toList(),
-        ),
-      ),
-    );
-  }
-}
-
-class HomeMobilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -200,7 +137,7 @@ class HomeMobilePage extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(4.0),
               child: GridView.count(
-                crossAxisCount: 2,
+                crossAxisCount: gridCount,
                 crossAxisSpacing: 2,
                 mainAxisSpacing: 2,
                 children: allPetsList.map((pets) {

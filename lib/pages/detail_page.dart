@@ -174,9 +174,9 @@ class _DetailWebPageState extends State<DetailWebPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 ShadowText(
-                  'Face Pets',
+                  'FacePets',
                   style: TextStyle(
-                    fontFamily: 'old',
+                    fontFamily: 'Old',
                     fontSize: 32,
                   ),
                 ),
@@ -191,28 +191,6 @@ class _DetailWebPageState extends State<DetailWebPage> {
                             child: Image.asset(widget.pets.imageAsset),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          SizedBox(height: 16),
-                          // Scrollbar(
-                          //   isAlwaysShown: true,
-                          //   controller: _scrollController,
-                          //   child: Container(
-                          //     height: 150,
-                          //     padding: const EdgeInsets.only(bottom: 16),
-                          //     child: ListView(
-                          //       controller: _scrollController,
-                          //       scrollDirection: Axis.horizontal,
-                          //       children: widget.pets.imageUrls.map((url) {
-                          //         return Padding(
-                          //           padding: const EdgeInsets.all(4.0),
-                          //           child: ClipRRect(
-                          //             borderRadius: BorderRadius.circular(10),
-                          //             child: Image.network(url),
-                          //           ),
-                          //         );
-                          //       }).toList(),
-                          //     ),
-                          //   ),
-                          // ),
                         ],
                       ),
                     ),
